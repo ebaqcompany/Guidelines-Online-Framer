@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/guidelines.online/" },
+    { "source": "/(.*)", "destination": "/guidelines.online/$1" }
+  ]
+}
