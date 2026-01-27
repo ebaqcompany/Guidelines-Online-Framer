@@ -60,10 +60,27 @@
     }
     </script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f1f1f1;
+            color: #1e1e1e;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
         @font-face {
             font-family: 'Geist';
             font-style: normal;
@@ -85,66 +102,46 @@
             font-display: swap;
             src: url(/fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
         }
-    </style>
-
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #f1f1f1;
-            color: #1e1e1e;
-            line-height: 1.5;
-            min-height: 100vh;
-        }
 
         a {
             color: inherit;
             text-decoration: none;
         }
 
-        /* Navigation */
+        /* Navigation - matching landing page style */
         .navbar {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 99px;
-            padding: 12px 24px;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 0 40px;
+            height: 72px;
             display: flex;
             align-items: center;
-            gap: 32px;
-            z-index: 1000;
-            border: 1px solid #e6e6e6;
+            justify-content: space-between;
         }
 
         .navbar-logo img {
-            height: 32px;
+            height: 40px;
             width: auto;
+        }
+
+        .navbar-center {
+            display: flex;
+            align-items: center;
+            gap: 40px;
         }
 
         .navbar-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 40px;
         }
 
         .navbar-links a {
-            font-size: 16px;
+            font-size: 18px;
             color: #1e1e1e;
             transition: opacity 0.2s;
+            font-weight: 400;
         }
 
         .navbar-links a:hover {
@@ -158,9 +155,9 @@
         .navbar-cta {
             background: rgb(0, 175, 236);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 99px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
             transition: opacity 0.2s;
         }
@@ -169,43 +166,48 @@
             opacity: 0.9;
         }
 
-        /* Main Content */
-        .main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 140px 24px 80px;
-        }
-
-        .page-header {
+        /* Hero Section */
+        .hero {
+            background: white;
+            border: 1px solid #e6e6e6;
+            border-radius: 20px;
+            margin: 40px;
+            padding: 80px 40px;
             text-align: center;
-            margin-bottom: 64px;
         }
 
-        .page-header h1 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 4rem;
             font-weight: 400;
             letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 16px;
+            line-height: 0.95;
+            margin-bottom: 24px;
         }
 
-        .page-header p {
-            font-size: 1.25rem;
+        .hero p {
+            font-size: 1.5rem;
             color: rgba(30, 30, 30, 0.7);
             max-width: 600px;
             margin: 0 auto;
         }
 
+        /* Main Content */
+        .main {
+            padding: 0 40px 80px;
+        }
+
         /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .blog-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid #e6e6e6;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -229,14 +231,14 @@
         }
 
         .blog-card-content {
-            padding: 24px;
+            padding: 32px;
         }
 
         .blog-card-meta {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-size: 0.875rem;
             color: rgba(30, 30, 30, 0.6);
         }
@@ -244,7 +246,7 @@
         .blog-card-category {
             background: rgba(0, 175, 236, 0.1);
             color: rgb(0, 175, 236);
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 99px;
             font-size: 0.75rem;
             font-weight: 500;
@@ -253,7 +255,7 @@
         }
 
         .blog-card h2 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 500;
             letter-spacing: -0.02em;
             line-height: 1.3;
@@ -262,7 +264,7 @@
 
         .blog-card p {
             color: rgba(30, 30, 30, 0.7);
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.6;
         }
 
@@ -270,14 +272,15 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 16px;
+            margin-top: 20px;
             font-weight: 500;
             color: rgb(0, 175, 236);
+            font-size: 1.1rem;
         }
 
         .blog-card-link svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             transition: transform 0.2s;
         }
 
@@ -289,12 +292,11 @@
         .footer {
             background: #1e1e1e;
             color: white;
-            padding: 64px 24px;
-            margin-top: 80px;
+            padding: 48px 40px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -304,17 +306,18 @@
         }
 
         .footer-logo img {
-            height: 28px;
+            height: 32px;
             filter: brightness(0) invert(1);
         }
 
         .footer-links {
             display: flex;
-            gap: 32px;
+            gap: 40px;
         }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
             transition: color 0.2s;
         }
 
@@ -328,23 +331,34 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .navbar {
-                width: calc(100% - 32px);
-                padding: 12px 16px;
-                gap: 16px;
+                padding: 0 20px;
             }
 
             .navbar-links {
                 display: none;
             }
 
-            .page-header h1 {
+            .hero {
+                margin: 20px;
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .main {
+                padding: 0 20px 60px;
             }
 
             .blog-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 40px 20px;
             }
 
             .footer-content {
@@ -362,20 +376,21 @@
         </a>
         <div class="navbar-links">
             <a href="/#about">About</a>
-            <a href="index.html" class="active">Blog</a>
+            <a href="/blog/" class="active">Blog</a>
             <a href="/#pricing">Pricing</a>
             <a href="/#showcase">Showcase</a>
         </div>
         <a href="https://app.guidelines.online/" class="navbar-cta" target="_blank" rel="noopener">Launch App</a>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Blog</h1>
+        <p>Expert insights on brand guidelines, visual identity systems, and maintaining brand consistency across your organization.</p>
+    </section>
+
     <!-- Main Content -->
     <main class="main">
-        <header class="page-header">
-            <h1>Blog</h1>
-            <p>Expert insights on brand guidelines, visual identity systems, and maintaining brand consistency across your organization.</p>
-        </header>
-
         <div class="blog-grid">
             <!-- Article Card: Brand Guidelines -->
             <article class="blog-card">
@@ -399,10 +414,6 @@
                     </div>
                 </a>
             </article>
-
-            <!-- Placeholder for future articles - programmatic SEO ready -->
-            <!-- Additional articles can be added here following the same pattern -->
-
         </div>
     </main>
 
@@ -414,7 +425,7 @@
             </a>
             <div class="footer-links">
                 <a href="/#about">About</a>
-                <a href="index.html">Blog</a>
+                <a href="/blog/">Blog</a>
                 <a href="/#pricing">Pricing</a>
                 <a href="/#showcase">Showcase</a>
             </div>

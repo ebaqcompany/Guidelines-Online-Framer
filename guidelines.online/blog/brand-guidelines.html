@@ -188,8 +188,27 @@
     }
     </script>
 
-    <!-- Fonts -->
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f1f1f1;
+            color: #1e1e1e;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
         @font-face {
             font-family: 'Geist';
             font-style: normal;
@@ -211,28 +230,6 @@
             font-display: swap;
             src: url(/fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
         }
-    </style>
-
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #f1f1f1;
-            color: #1e1e1e;
-            line-height: 1.7;
-            min-height: 100vh;
-        }
 
         a {
             color: rgb(0, 175, 236);
@@ -248,38 +245,34 @@
             height: auto;
         }
 
-        /* Navigation */
+        /* Navigation - matching landing page style */
         .navbar {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 99px;
-            padding: 12px 24px;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 0 40px;
+            height: 72px;
             display: flex;
             align-items: center;
-            gap: 32px;
-            z-index: 1000;
-            border: 1px solid #e6e6e6;
+            justify-content: space-between;
         }
 
         .navbar-logo img {
-            height: 32px;
+            height: 40px;
             width: auto;
         }
 
         .navbar-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 40px;
         }
 
         .navbar-links a {
-            font-size: 16px;
+            font-size: 18px;
             color: #1e1e1e;
             transition: opacity 0.2s;
+            font-weight: 400;
         }
 
         .navbar-links a:hover {
@@ -294,9 +287,9 @@
         .navbar-cta {
             background: rgb(0, 175, 236);
             color: white !important;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 99px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
             transition: opacity 0.2s;
         }
@@ -306,24 +299,26 @@
             text-decoration: none;
         }
 
-        /* Article Layout */
-        .article {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 140px 24px 80px;
+        /* Article Container */
+        .article-container {
+            background: white;
+            border: 1px solid #e6e6e6;
+            border-radius: 20px;
+            margin: 40px;
+            padding: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .article-header {
-            margin-bottom: 48px;
-        }
-
+        /* Breadcrumb */
         .breadcrumb {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 0.875rem;
             color: rgba(30, 30, 30, 0.6);
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .breadcrumb a {
@@ -336,6 +331,11 @@
 
         .breadcrumb-separator {
             color: rgba(30, 30, 30, 0.3);
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 40px;
         }
 
         .article-meta {
@@ -369,7 +369,7 @@
 
         .article-title {
             font-size: 3rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 24px;
@@ -377,12 +377,12 @@
 
         .article-excerpt {
             font-size: 1.25rem;
-            color: rgba(30, 30, 30, 0.8);
+            color: rgba(30, 30, 30, 0.7);
             line-height: 1.6;
         }
 
         .article-hero {
-            margin: 48px 0;
+            margin: 40px 0;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid #e6e6e6;
@@ -394,13 +394,6 @@
         }
 
         /* Article Content */
-        .article-content {
-            background: white;
-            border-radius: 16px;
-            padding: 48px;
-            border: 1px solid #e6e6e6;
-        }
-
         .article-content h2 {
             font-size: 2rem;
             font-weight: 500;
@@ -450,6 +443,46 @@
             margin: 32px 0;
             font-style: italic;
             color: rgba(30, 30, 30, 0.8);
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid #e6e6e6;
+        }
+
+        .toc h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(30, 30, 30, 0.6);
+            margin-bottom: 16px;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .toc a {
+            color: #1e1e1e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toc a:hover {
+            color: rgb(0, 175, 236);
         }
 
         /* Example Cards Grid */
@@ -530,46 +563,6 @@
             text-decoration: none;
         }
 
-        /* Table of Contents */
-        .toc {
-            background: #f9f9f9;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
-            border: 1px solid #e6e6e6;
-        }
-
-        .toc h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: rgba(30, 30, 30, 0.6);
-            margin-bottom: 16px;
-        }
-
-        .toc ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .toc li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-
-        .toc a {
-            color: #1e1e1e;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .toc a:hover {
-            color: rgb(0, 175, 236);
-        }
-
         /* FAQ Section */
         .faq-section {
             margin-top: 48px;
@@ -606,12 +599,11 @@
         .footer {
             background: #1e1e1e;
             color: white;
-            padding: 64px 24px;
-            margin-top: 80px;
+            padding: 48px 40px;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -621,17 +613,18 @@
         }
 
         .footer-logo img {
-            height: 28px;
+            height: 32px;
             filter: brightness(0) invert(1);
         }
 
         .footer-links {
             display: flex;
-            gap: 32px;
+            gap: 40px;
         }
 
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
             transition: color 0.2s;
         }
 
@@ -646,23 +639,22 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .navbar {
-                width: calc(100% - 32px);
-                padding: 12px 16px;
-                gap: 16px;
+                padding: 0 20px;
             }
 
             .navbar-links {
                 display: none;
             }
 
-            .article-title {
-                font-size: 2rem;
+            .article-container {
+                margin: 20px;
+                padding: 32px 24px;
             }
 
-            .article-content {
-                padding: 24px;
+            .article-title {
+                font-size: 2rem;
             }
 
             .examples-grid {
@@ -671,6 +663,10 @@
 
             .cta-box {
                 padding: 32px 24px;
+            }
+
+            .footer {
+                padding: 40px 20px;
             }
 
             .footer-content {
@@ -688,7 +684,7 @@
         </a>
         <div class="navbar-links">
             <a href="/#about">About</a>
-            <a href="index.html" class="active">Blog</a>
+            <a href="/blog/" class="active">Blog</a>
             <a href="/#pricing">Pricing</a>
             <a href="/#showcase">Showcase</a>
         </div>
@@ -696,17 +692,17 @@
     </nav>
 
     <!-- Article -->
-    <article class="article" itemscope itemtype="https://schema.org/Article">
-        <header class="article-header">
-            <!-- Breadcrumb -->
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="/">Home</a>
-                <span class="breadcrumb-separator">/</span>
-                <a href="index.html">Blog</a>
-                <span class="breadcrumb-separator">/</span>
-                <span>Brand Guidelines</span>
-            </nav>
+    <article class="article-container" itemscope itemtype="https://schema.org/Article">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="/blog/">Blog</a>
+            <span class="breadcrumb-separator">/</span>
+            <span>Brand Guidelines</span>
+        </nav>
 
+        <header class="article-header">
             <div class="article-meta">
                 <span class="article-category">Brand Strategy</span>
                 <time class="article-date" datetime="2026-01-27" itemprop="datePublished">January 27, 2026</time>
@@ -1014,7 +1010,7 @@
             </a>
             <div class="footer-links">
                 <a href="/#about">About</a>
-                <a href="index.html">Blog</a>
+                <a href="/blog/">Blog</a>
                 <a href="/#pricing">Pricing</a>
                 <a href="/#showcase">Showcase</a>
             </div>
