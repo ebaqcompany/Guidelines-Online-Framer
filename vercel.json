@@ -1,5 +1,9 @@
 {
   "rewrites": [
+    { "source": "/framerusercontent.com/:path*", "destination": "/framerusercontent.com/:path*" },
+    { "source": "/fonts.gstatic.com/:path*", "destination": "/fonts.gstatic.com/:path*" },
+    { "source": "/fonts.googleapis.com/:path*", "destination": "/fonts.googleapis.com/:path*" },
+    { "source": "/app.guidelines.online/:path*", "destination": "/app.guidelines.online/:path*" },
     { "source": "/", "destination": "/guidelines.online/" },
     { "source": "/(.*)", "destination": "/guidelines.online/$1" }
   ]
