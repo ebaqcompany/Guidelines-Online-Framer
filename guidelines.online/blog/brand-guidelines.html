@@ -245,20 +245,33 @@
             height: auto;
         }
 
-        /* Navigation - matching landing page style */
+        /* Navbar Container - matching Framer's floating pill navbar */
+        .navbar-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: auto;
+        }
+
         .navbar {
-            width: 100%;
             background: white;
-            border-bottom: 1px solid #e6e6e6;
-            padding: 0 40px;
-            height: 72px;
+            border: 1px solid rgb(230, 230, 230);
+            border-radius: 99px;
+            padding: 12px 12px 12px 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
         }
 
         .navbar-logo img {
-            height: 40px;
+            height: 51px;
             width: auto;
         }
 
@@ -269,8 +282,8 @@
         }
 
         .navbar-links a {
-            font-size: 18px;
-            color: #1e1e1e;
+            font-size: 20px;
+            color: rgb(30, 30, 30);
             transition: opacity 0.2s;
             font-weight: 400;
         }
@@ -280,23 +293,26 @@
             text-decoration: none;
         }
 
-        .navbar-links a.active {
-            font-weight: 500;
-        }
-
         .navbar-cta {
             background: rgb(0, 175, 236);
             color: white !important;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border-radius: 99px;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 30px;
             transition: opacity 0.2s;
+            white-space: nowrap;
         }
 
         .navbar-cta:hover {
             opacity: 0.9;
             text-decoration: none;
+        }
+
+        /* Page wrapper to account for fixed navbar */
+        .page-content {
+            padding-top: 100px;
         }
 
         /* Article Container */
@@ -595,15 +611,14 @@
             line-height: 1.7;
         }
 
-        /* Footer - matching landing page */
+        /* Footer - matching landing page exactly */
         .footer {
-            background: #f1f1f1;
             padding: 60px 40px 40px;
             text-align: center;
         }
 
         .footer-logo {
-            display: block;
+            display: inline-block;
             margin-bottom: 32px;
         }
 
@@ -620,7 +635,7 @@
         }
 
         .footer-links a {
-            color: #1e1e1e;
+            color: rgb(30, 30, 30);
             font-size: 16px;
             transition: opacity 0.2s;
         }
@@ -632,17 +647,30 @@
 
         .footer-copyright {
             color: rgba(30, 30, 30, 0.5);
-            font-size: 0.875rem;
+            font-size: 14px;
         }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .navbar {
-                padding: 0 20px;
+        @media (max-width: 1100px) {
+            .navbar-wrapper {
+                width: calc(100% - 40px);
+                left: 20px;
+                transform: none;
             }
 
+            .navbar {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 900px) {
             .navbar-links {
                 display: none;
+            }
+
+            .navbar {
+                padding: 12px 12px 12px 20px;
             }
 
             .article-container {
@@ -665,29 +693,27 @@
             .footer {
                 padding: 40px 20px;
             }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="/" class="navbar-logo">
-            <img src="/framerusercontent.com/images/CLSoe4YF8B6FgXmFjLcXJPxNSf0.svg" alt="Guidelines.online">
-        </a>
-        <div class="navbar-links">
-            <a href="/#about">About</a>
-            <a href="/blog/" class="active">Blog</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/#showcase">Showcase</a>
-        </div>
-        <a href="https://app.guidelines.online/" class="navbar-cta" target="_blank" rel="noopener">Launch App</a>
-    </nav>
+    <!-- Navigation - matching Framer floating pill navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="/" class="navbar-logo">
+                <img src="/framerusercontent.com/images/CLSoe4YF8B6FgXmFjLcXJPxNSf0.svg" alt="Guidelines.online">
+            </a>
+            <div class="navbar-links">
+                <a href="/#about">About</a>
+                <a href="/blog/">Blog</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#showcase">Showcase</a>
+            </div>
+            <a href="https://app.guidelines.online/" class="navbar-cta" target="_blank" rel="noopener">Launch App</a>
+        </nav>
+    </div>
 
+    <div class="page-content">
     <!-- Article -->
     <article class="article-container" itemscope itemtype="https://schema.org/Article">
         <!-- Breadcrumb -->
@@ -999,17 +1025,18 @@
         </div>
     </article>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <a href="/" class="footer-logo">
-            <img src="/framerusercontent.com/images/WBq3XHiwxHBndfcmO3vpZRHf1k.svg" alt="Guidelines Online">
-        </a>
-        <div class="footer-links">
-            <a href="/terms">Terms of Use</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/contact">Contact</a>
-        </div>
-        <p class="footer-copyright">&copy;2025 Copyright Guidelines.Online</p>
-    </footer>
+        <!-- Footer - matching landing page exactly -->
+        <footer class="footer">
+            <a href="/" class="footer-logo">
+                <img src="/framerusercontent.com/images/WBq3XHiwxHBndfcmO3vpZRHf1k.svg" alt="Guidelines Online">
+            </a>
+            <div class="footer-links">
+                <a href="/terms">Terms of Use</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy;2025 Copyright Guidelines.Online</p>
+        </footer>
+    </div>
 </body>
 </html>

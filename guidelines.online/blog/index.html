@@ -60,27 +60,9 @@
     }
     </script>
 
+    <!-- Fonts matching Framer landing page -->
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: #f1f1f1;
-            color: #1e1e1e;
-            line-height: 1.5;
-            min-height: 100vh;
-        }
-
+        /* Geist font - matching landing page */
         @font-face {
             font-family: 'Geist';
             font-style: normal;
@@ -102,33 +84,67 @@
             font-display: swap;
             src: url(/fonts.gstatic.com/s/geist/v4/gyByhwUxId8gMEwcGFU.woff2) format('woff2');
         }
+    </style>
+
+    <style>
+        /* Reset - matching Framer */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: rgb(241, 241, 241);
+            color: rgb(30, 30, 30);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
 
         a {
             color: inherit;
             text-decoration: none;
         }
 
-        /* Navigation - matching landing page style */
-        .navbar {
-            width: 100%;
-            background: white;
-            border-bottom: 1px solid #e6e6e6;
-            padding: 0 40px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .navbar-logo img {
-            height: 40px;
+        /* Navbar Container - matching Framer's floating pill navbar */
+        .navbar-wrapper {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
             width: auto;
         }
 
-        .navbar-center {
+        .navbar {
+            background: white;
+            border: 1px solid rgb(230, 230, 230);
+            border-radius: 99px;
+            padding: 12px 12px 12px 24px;
             display: flex;
             align-items: center;
             gap: 40px;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 51px;
+            width: auto;
         }
 
         .navbar-links {
@@ -138,8 +154,8 @@
         }
 
         .navbar-links a {
-            font-size: 18px;
-            color: #1e1e1e;
+            font-size: 20px;
+            color: rgb(30, 30, 30);
             transition: opacity 0.2s;
             font-weight: 400;
         }
@@ -148,28 +164,31 @@
             opacity: 0.7;
         }
 
-        .navbar-links a.active {
-            font-weight: 500;
-        }
-
         .navbar-cta {
             background: rgb(0, 175, 236);
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border-radius: 99px;
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 30px;
             transition: opacity 0.2s;
+            white-space: nowrap;
         }
 
         .navbar-cta:hover {
             opacity: 0.9;
         }
 
-        /* Hero Section */
+        /* Page wrapper to account for fixed navbar */
+        .page-content {
+            padding-top: 100px;
+        }
+
+        /* Hero Section - matching landing page card style */
         .hero {
             background: white;
-            border: 1px solid #e6e6e6;
+            border: 1px solid rgb(230, 230, 230);
             border-radius: 20px;
             margin: 40px;
             padding: 80px 40px;
@@ -177,16 +196,17 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-family: 'Geist', sans-serif;
+            font-size: 80px;
             font-weight: 400;
-            letter-spacing: -0.03em;
-            line-height: 0.95;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
             margin-bottom: 24px;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            color: rgba(30, 30, 30, 0.7);
+            font-size: 24px;
+            color: rgb(30, 30, 30);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -209,7 +229,7 @@
             background: white;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid #e6e6e6;
+            border: 1px solid rgb(230, 230, 230);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -239,7 +259,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 16px;
-            font-size: 0.875rem;
+            font-size: 14px;
             color: rgba(30, 30, 30, 0.6);
         }
 
@@ -248,14 +268,14 @@
             color: rgb(0, 175, 236);
             padding: 4px 12px;
             border-radius: 99px;
-            font-size: 0.75rem;
+            font-size: 12px;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .blog-card h2 {
-            font-size: 1.75rem;
+            font-size: 28px;
             font-weight: 500;
             letter-spacing: -0.02em;
             line-height: 1.3;
@@ -264,7 +284,7 @@
 
         .blog-card p {
             color: rgba(30, 30, 30, 0.7);
-            font-size: 1.1rem;
+            font-size: 18px;
             line-height: 1.6;
         }
 
@@ -275,7 +295,7 @@
             margin-top: 20px;
             font-weight: 500;
             color: rgb(0, 175, 236);
-            font-size: 1.1rem;
+            font-size: 18px;
         }
 
         .blog-card-link svg {
@@ -288,15 +308,14 @@
             transform: translateX(4px);
         }
 
-        /* Footer - matching landing page */
+        /* Footer - matching landing page exactly */
         .footer {
-            background: #f1f1f1;
             padding: 60px 40px 40px;
             text-align: center;
         }
 
         .footer-logo {
-            display: block;
+            display: inline-block;
             margin-bottom: 32px;
         }
 
@@ -313,29 +332,41 @@
         }
 
         .footer-links a {
-            color: #1e1e1e;
+            color: rgb(30, 30, 30);
             font-size: 16px;
             transition: opacity 0.2s;
         }
 
         .footer-links a:hover {
             opacity: 0.7;
-            text-decoration: none;
         }
 
         .footer-copyright {
             color: rgba(30, 30, 30, 0.5);
-            font-size: 0.875rem;
+            font-size: 14px;
         }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .navbar {
-                padding: 0 20px;
+        @media (max-width: 1100px) {
+            .navbar-wrapper {
+                width: calc(100% - 40px);
+                left: 20px;
+                transform: none;
             }
 
+            .navbar {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 900px) {
             .navbar-links {
                 display: none;
+            }
+
+            .navbar {
+                padding: 12px 12px 12px 20px;
             }
 
             .hero {
@@ -344,7 +375,11 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
             }
 
             .main {
@@ -358,74 +393,73 @@
             .footer {
                 padding: 40px 20px;
             }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="/" class="navbar-logo">
-            <img src="/framerusercontent.com/images/CLSoe4YF8B6FgXmFjLcXJPxNSf0.svg" alt="Guidelines.online">
-        </a>
-        <div class="navbar-links">
-            <a href="/#about">About</a>
-            <a href="/blog/" class="active">Blog</a>
-            <a href="/#pricing">Pricing</a>
-            <a href="/#showcase">Showcase</a>
-        </div>
-        <a href="https://app.guidelines.online/" class="navbar-cta" target="_blank" rel="noopener">Launch App</a>
-    </nav>
+    <!-- Navigation - matching Framer floating pill navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="/" class="navbar-logo">
+                <img src="/framerusercontent.com/images/CLSoe4YF8B6FgXmFjLcXJPxNSf0.svg" alt="Guidelines.online">
+            </a>
+            <div class="navbar-links">
+                <a href="/#about">About</a>
+                <a href="/blog/">Blog</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#showcase">Showcase</a>
+            </div>
+            <a href="https://app.guidelines.online/" class="navbar-cta" target="_blank" rel="noopener">Launch App</a>
+        </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Blog</h1>
-        <p>Expert insights on brand guidelines, visual identity systems, and maintaining brand consistency across your organization.</p>
-    </section>
+    <div class="page-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Blog</h1>
+            <p>Expert insights on brand guidelines, visual identity systems, and maintaining brand consistency across your organization.</p>
+        </section>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="blog-grid">
-            <!-- Article Card: Brand Guidelines -->
-            <article class="blog-card">
-                <a href="brand-guidelines.html">
-                    <div class="blog-card-image">
-                        <img src="https://cdn.prod.website-files.com/5de2db6d3719a1e2f3e4454c/651a6c67c9d14a3245487714_Best%20Examples%20of%20Brand%20Guidelines%20(2)%20(1).webp" alt="Brand Guidelines Examples" loading="lazy">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta">
-                            <span class="blog-card-category">Brand Strategy</span>
-                            <span>January 27, 2026</span>
+        <!-- Main Content -->
+        <main class="main">
+            <div class="blog-grid">
+                <!-- Article Card: Brand Guidelines -->
+                <article class="blog-card">
+                    <a href="brand-guidelines.html">
+                        <div class="blog-card-image">
+                            <img src="https://cdn.prod.website-files.com/5de2db6d3719a1e2f3e4454c/651a6c67c9d14a3245487714_Best%20Examples%20of%20Brand%20Guidelines%20(2)%20(1).webp" alt="Brand Guidelines Examples" loading="lazy">
                         </div>
-                        <h2>Brand Guidelines: 19 Best Examples & What Makes Them Work</h2>
-                        <p>Explore real-world brand guidelines from companies like Audi, Starbucks, and Spotify. Learn what makes effective brand guidelines and how to create your own.</p>
-                        <span class="blog-card-link">
-                            Read Article
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </span>
-                    </div>
-                </a>
-            </article>
-        </div>
-    </main>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span class="blog-card-category">Brand Strategy</span>
+                                <span>January 27, 2026</span>
+                            </div>
+                            <h2>Brand Guidelines: 19 Best Examples & What Makes Them Work</h2>
+                            <p>Explore real-world brand guidelines from companies like Audi, Starbucks, and Spotify. Learn what makes effective brand guidelines and how to create your own.</p>
+                            <span class="blog-card-link">
+                                Read Article
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <a href="/" class="footer-logo">
-            <img src="/framerusercontent.com/images/WBq3XHiwxHBndfcmO3vpZRHf1k.svg" alt="Guidelines Online">
-        </a>
-        <div class="footer-links">
-            <a href="/terms">Terms of Use</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/contact">Contact</a>
-        </div>
-        <p class="footer-copyright">&copy;2025 Copyright Guidelines.Online</p>
-    </footer>
+        <!-- Footer - matching landing page exactly -->
+        <footer class="footer">
+            <a href="/" class="footer-logo">
+                <img src="/framerusercontent.com/images/WBq3XHiwxHBndfcmO3vpZRHf1k.svg" alt="Guidelines Online">
+            </a>
+            <div class="footer-links">
+                <a href="/terms">Terms of Use</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy;2025 Copyright Guidelines.Online</p>
+        </footer>
+    </div>
 </body>
 </html>
