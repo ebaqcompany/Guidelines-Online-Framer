@@ -1,7 +1,4 @@
 {
-  "redirects": [
-    { "source": "/:path+", "destination": "https://www.guidelines.online/:path+", "permanent": true }
-  ],
   "rewrites": [
     { "source": "/framerusercontent/:path*", "destination": "/framerusercontent.com/:path*" },
     { "source": "/fonts.gstatic.com/:path*", "destination": "/fonts.gstatic.com/:path*" },
